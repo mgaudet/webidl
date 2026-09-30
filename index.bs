@@ -13158,8 +13158,7 @@ The \[[Prototype]] [=/internal slot=] of an [=asynchronous iterator prototype ob
         1.  If |object|'s [=default asynchronous iterator object/is finished=] is true, then:
             1.  Let |result| be [$CreateIteratorResultObject$](<emu-val>undefined</emu-val>,
                 <emu-val>true</emu-val>).
-            1.  Perform [=!=] [$Call$](|nextPromiseCapability|.\[[Resolve]],
-                <emu-val>undefined</emu-val>, « |result| »).
+            1.  Perform [=!=] [$SafePromiseResolve$](|nextPromiseCapability|, |result|).
             1.  Return |nextPromiseCapability|.\[[Promise]].
         1.  Let |kind| be |object|'s [=default asynchronous iterator object/kind=].
         1.  Let |nextPromise| be the result of
@@ -13247,8 +13246,7 @@ The \[[Prototype]] [=/internal slot=] of an [=asynchronous iterator prototype ob
         1.  Let |returnPromiseCapability| be [=!=] [$NewPromiseCapability$]({{%Promise%}}).
         1.  If |object|'s [=default asynchronous iterator object/is finished=] is true, then:
             1.  Let |result| be [$CreateIteratorResultObject$](|value|, <emu-val>true</emu-val>).
-            1.  Perform [=!=] [$Call$](|returnPromiseCapability|.\[[Resolve]],
-                <emu-val>undefined</emu-val>, « |result| »).
+            1.  Perform [=!=] [$SafePromiseResolve$](|returnPromiseCapability|, |result|).
             1.  Return |returnPromiseCapability|.\[[Promise]].
         1.  Set |object|'s [=default asynchronous iterator object/is finished=] to true.
         1.  Return the result of running the [=asynchronous iterator return=] algorithm for
